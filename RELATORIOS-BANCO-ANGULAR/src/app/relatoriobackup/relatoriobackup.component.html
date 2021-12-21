@@ -1,0 +1,142 @@
+<div>
+  <div class="container1">
+    <div class="container2">
+      <div class="container3">
+        <form [formGroup]="cad" #cads="ngForm">
+          <div clas="form-row flex-row flex-wrap align-items-center">
+            <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <label>Data</label>
+              <input class="form-control" type="text" name="valor" id="valor" formControlName="valor" (focusout)="separa(this.cad.value)">
+            </div>
+            <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <label>Data Backup</label>
+              <input class="form-control" 
+              type="text" 
+              name="data" 
+              id="data" 
+              formControlName="data" 
+              placeholder="yyyyy-mm-dd"
+              (ngModelChange)="verificaCompleto()"
+              [(ngModel)]="model"
+              ngbDatepicker 
+              #d="ngbDatepicker">
+            </div>
+            <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <label>Anotações</label>
+              <input class="form-control" type="text" name="anotacao" id="anotacao" formControlName="anotacao"><br>
+            </div>
+            <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <label>Anotações Telefone</label>
+              <input class="form-control" type="text" name="anotacao2" id="anotacao2" formControlName="anotacao2"><br>
+            </div>
+            <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" *ngIf="!hiddenRecovery">
+              <div clas="form-row flex-row flex-wrap align-items-center">
+                <label>System Recovery</label>
+                <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <label>Data</label>
+                  <input class="form-control" 
+                  type="text" 
+                  name="datas" 
+                  id="datas" 
+                  formControlName="datas" 
+                  placeholder="yyyyy-mm-dd"
+                  [(ngModel)]="models"
+                  ngbDatepicker 
+                  #ds="ngbDatepicker">
+                </div>
+                <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                  <label>Anotações Recovery</label>
+                  <input class="form-control" type="text" name="anotacoes" id="anotacoes" formControlName="anotacoes"><br>
+                </div>
+                <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-bottom: 10px; text-align: right;">
+                  <button class="btn btn-outline-secondary buttonClass3" (click)="ds.toggle()" type="button">Calendário Recovery</button>&nbsp;
+                </div>
+              </div>
+            </div>
+            <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" *ngIf="!hiddenCadastro">
+              <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label>Nome Busca</label>
+                <input class="form-control" type="text" name="nomebusca" id="nomebusca" formControlName="nomebusca" maxlength="100" ><br>
+              </div>
+              <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label>Nome Alternativo</label>
+                <input class="form-control" type="text" name="nomelternativo" id="nomelternativo" formControlName="nomelternativo" maxlength="100" ><br>
+              </div>
+            </div>
+            <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" style="text-align: right;">
+              <button class="btn btn-outline-secondary buttonClass3" (click)="d.toggle()" type="button">Calendário</button>&nbsp;
+              <button class="btn btn-outline-secondary buttonClass3"  type="button"  (click)="limparDados()">Limpar</button>&nbsp;
+              <button class="btn btn-outline-secondary buttonClass3"  type="button"  (click)="corrige()" id="corrige">Corrigir</button>&nbsp;
+              <button class="btn btn-outline-secondary buttonClassActivated"  type="button"  (click)="minimiza()" id="minimiza">Minimiza Aba Recovery</button>&nbsp;
+              <button class="btn btn-outline-secondary buttonClass3"  type="button"  (click)="gerarPDF()" [disabled]="gerar">Gerar Relatório</button>
+              <button class="btn btn-outline-secondary buttonClass3"  type="button"  (click)="minimizaCadastro()" id="cadastro">Cadastro Backup</button>&nbsp;
+              <button class="btn btn-outline-secondary buttonClass3"  type="button"  (click)="cadastrar()">Cadastrar</button>&nbsp;
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container1">
+      <div class="container2">
+        <div class="container3">
+          <div class="row">
+            <div class="col" style="color: black !important;"></div>
+            <div class="col" style="color: black !important;" (click)="manualChange('udp')">{{'TIPO 1' + manual.udp}}</div>
+            <div class="col" style="color: black !important;" (click)="manualChange('fita')">{{'TIPO 2' + manual.fita}}</div>
+            <div class="col" style="color: black !important;">SYSTEM RECOVERY</div>
+          </div>
+          <div *ngFor="let udp of serverList2">
+            <div class="lines"></div>
+            <div class="row">
+              <div class="col">
+                <label>{{udp.name}}</label>
+              </div>
+              <div class="col">
+                <div *ngIf="manual.udp === '- Manual'">
+                  <button class="classSuccess" [hidden]="udp.classeU === 'classFailed'" (click)="editaFita(udp, 'classSuccess', 'classeU')" style="margin-left: 50px !important;"></button>
+                  <button class="classFailed" [hidden]="udp.classeU === 'classSuccess'" (click)="editaFita(udp, 'classFailed', 'classeU')"style="margin-left: 50px !important;"></button>
+                </div>
+                <div *ngIf="manual.udp !== '- Manual'">
+                  <button disabled="true" [class]="udp.classeU" style="margin-left: 50px !important;"></button>
+                </div>
+              </div>
+              <div class="col">
+                <div *ngIf="manual.fita === '- Manual'">
+                  <button class="classSuccess" [hidden]="udp.classeF === 'classFailed'" (click)="editaFita(udp, 'classSuccess', 'classeF')" style="margin-left: 50px !important;"></button>
+                  <button class="classFailed" [hidden]="udp.classeF === 'classSuccess'" (click)="editaFita(udp, 'classFailed', 'classeF')"style="margin-left: 50px !important;"></button>
+                </div>
+                <div *ngIf="manual.fita !== '- Manual'">
+                  <button disabled="true" [class]="udp.classeF" style="margin-left: 50px !important;"></button>
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  <button [class]="udp.classeR" (click)="editaFita(udp, 'classSuccess', 'classeR')" style="margin-left: 50px !important;"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="container1">
+    <div class="container2">
+      <div class="container3">
+        <div *ngFor="let udps of telefone">
+          <div class="row">
+            <div class="col">
+              <label>{{udps.name}}</label>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+              <button class="classSuccess" [hidden]="udps.classe === 'classFailed'" (click)="editaTel(udps, 'classSuccess')" style="margin-left: 50px !important;"></button>
+              <button class="classFailed" [hidden]="udps.classe === 'classSuccess'" (click)="editaTel(udps, 'classFailed')"style="margin-left: 50px !important;"></button>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
