@@ -15,7 +15,7 @@ exports.createConnection = () => {
             host: 'localhost',
             user: 'postgres',
             database: 'postgres',
-            password: '99329940',
+            password: 'admin',
             port: '5432'
         });
         return client
