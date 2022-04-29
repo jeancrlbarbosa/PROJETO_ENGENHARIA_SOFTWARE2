@@ -11,12 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RelatoriobackupComponent } from './relatoriobackup/relatoriobackup.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RelatoriobackupComponent
+    RelatoriobackupComponent,
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    createServer();
   }
 
 }

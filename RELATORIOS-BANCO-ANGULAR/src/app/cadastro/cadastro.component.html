@@ -1,0 +1,34 @@
+<div>
+    <div class="container1">
+        <div class="container2">
+            <div class="container3">
+                <form [formGroup]="cad" #cads="ngForm">
+                    <div clas="form-row flex-row flex-wrap align-items-center" style="position: absolute; left: 550px; top: 200px">
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h1>YOUREAD</h1>
+                        </div>
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label>Pesquisa</label>
+                            <input class="form-control" type="text" name="login" id="login" formControlName="login">
+                        </div>
+                        <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" style="text-align: right;">
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: 150px;" type="button" [disabled]="!cad.valid">Pesquisar</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: 80px;" type="button" [disabled]="!cad.valid">Voltar</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: 3px;" type="button" [disabled]="!cad.valid"(click)="sair()">Sair</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: -80px;" type="button" [disabled]="!cad.valid">Excluir</button>
+                        </div>
+                    </div>
+                    <div clas="form-row flex-row flex-wrap align-items-center" style="position: absolute; left: 550px; top: 400px" *ngIf="admin">
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label>Vinculação de Documentos</label>
+                            <input class="form-control" type="text" name="login" id="login" formControlName="login">
+                        </div>
+                        <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" style="text-align: right;">
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 100px; right: 3px;" type="button" [disabled]="!cad.valid">Vincular</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

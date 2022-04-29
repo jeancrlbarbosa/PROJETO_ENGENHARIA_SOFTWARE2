@@ -39,6 +39,7 @@ export class RelatoriobackupComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
+ 
 	this.getServers();
 	this.Formcad();
   }

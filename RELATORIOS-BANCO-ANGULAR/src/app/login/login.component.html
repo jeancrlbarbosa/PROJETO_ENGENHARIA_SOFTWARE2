@@ -1,0 +1,26 @@
+<div>
+    <div class="container1">
+        <div class="container2">
+            <div class="container3">
+                <form [formGroup]="cad" #cads="ngForm">
+                    <div clas="form-row flex-row flex-wrap align-items-center" style="position: absolute; left: 550px; top: 200px">
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h1>YOUREAD</h1>
+                        </div>
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label>Usuário</label>
+                            <input class="form-control" type="text" name="login" id="login" formControlName="login">
+                        </div>
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label>Senha</label>
+                            <input class="form-control" type="password" name="senha" id="senha" formControlName="senha">
+                        </div>
+                        <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" style="text-align: right;">
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 220px; right: 3px;" type="button" (click)="login()" [disabled]="!cad.valid">Entrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

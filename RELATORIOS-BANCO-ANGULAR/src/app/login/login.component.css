@@ -79,9 +79,3 @@ button:hover {
     border-top: 2px solid #3d3d3d;
     border-radius: 90%;
 }
-
-.content {
-
-    position: absolute;
-    left: 550px;
-}
