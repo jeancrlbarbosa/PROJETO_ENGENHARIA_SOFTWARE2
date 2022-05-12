@@ -32,7 +32,8 @@ export class CadastroComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-  !this.login ? this.router.navigate(['login']) : '';
+	  const login = localStorage.getItem("login");
+  !login ? this.router.navigate(['login']) : '';
 	this.Formcad();
   }
 
@@ -89,7 +90,7 @@ export class CadastroComponent implements OnInit {
 
 
   sair() {
-
+	localStorage.removeItem("login");
     this.router.navigate(['login'])
   }
 

@@ -84,9 +84,15 @@ export class LoginComponent implements OnInit {
  }
 
  login(){
-
-  this.router.navigate(['cadastro']);
- }
+  if((this.cad.controls.login.value==="admin") && (this.cad.controls.senha.value==="admin"))
+  {
+	  localStorage.setItem("login", JSON.stringify({login:this.cad.controls.login.value, senha:this.cad.controls.senha.value}))
+	  this.router.navigate(['cadastro']);
+  }
+  else {
+	this.toaster.error( 'Usuario ou Senha Invalidos', 'MENSAGEM');
+  }
+ };
 
 
 
