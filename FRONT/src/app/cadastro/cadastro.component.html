@@ -1,0 +1,36 @@
+<div>
+    <div class="container1">
+        <div class="container2">
+            <div class="container3">
+                <form [formGroup]="cad" #cads="ngForm">
+                    <div clas="form-row flex-row flex-wrap align-items-center" style="position: absolute; left: 550px; top: 200px">
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h1>YOUREAD</h1>
+                        </div>
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label class="livros" (click)="abrir()">{{'Pesquisa' + (livro && livro.name ? (' - ' + livro.name) : '')}}</label>
+                            <input class="form-control" type="text" name="livro" id="livro" formControlName="livro">
+                        </div>
+                        <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" style="text-align: right;">
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: 227px;" *ngIf="admin" (click)="cadastrarUsuarios()" type="button">Usuários</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: 125px;" (click)="get()" type="button">Pesquisar</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: 50px;" type="button" (click)="abrir()">Abrir</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: -10px;" type="button"(click)="sair()">Sair</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 150px; right: -90px;" type="button" *ngIf="admin" (click)="excluir()">Excluir</button>
+                        </div>
+                    </div>
+                    <div clas="form-row flex-row flex-wrap align-items-center" style="position: absolute; left: 550px; top: 400px" *ngIf="admin">
+                        <div clas="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label>Vinculação de Documentos</label>
+                            <input class="form-control" type="file" name="files" id="files"style="position: absolute; right: -77px;" formControlName="files" (change)="upload($event, $event.target.files)" accept=".pdf, .jpeg, .JPG, .jpg, .PNG, .png">
+                        </div>
+                        <div clas="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3" style="text-align: right;">
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 100px; right: 110px;" type="button" (click)="inserir()" *ngIf="file && file.base64">Vincular</button>
+                            <button class="btn btn-outline-secondary buttonClass3" style="position: absolute; top: 100px; right: 12px;" type="button" (click)="remover()" *ngIf="file && file.base64">Remover</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

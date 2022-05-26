@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+body {
+    background-color: #ffffff;
+}
+
+label {
+    font-weight: bold;
+}
+
+.ng-select .ng-select-container {
+    min-height: 20px;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 28px !important;
+    min-height: 28px !important;
+}
+
+.ng-dropdown-panel.select-grid.ng-select-bottom {
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+}
+
+.ng-dropdown-panel.select-grid.ng-select-bottom {
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+}

@@ -1,10 +1,22 @@
 /*BANCO CRIADO EM POSTGRESQL*/
-Create table public.rel_relatorios (
+create table login
+(
+    codigo serial
+        primary key,
+    login  varchar(100),
+    senha  varchar(10),
+    tipusu varchar(1)
+);
 
-    codigo serial primary key,
-    name varchar(100),
-    altname varchar(100)
-)
+alter table login
+    owner to postgres;
 
+create table livros
+(
+    codigo serial
+        primary key,
+    name   varchar(100),
+    base64 text
+);
 
 
