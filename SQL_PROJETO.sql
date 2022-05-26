@@ -8,9 +8,6 @@ create table login
     tipusu varchar(1)
 );
 
-alter table login
-    owner to postgres;
-
 create table livros
 (
     codigo serial
